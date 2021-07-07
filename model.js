@@ -13,11 +13,24 @@ const postSchema = mongoose.Schema(
 
 const threadSchema = mongoose.Schema(
     {
-        author: String,
-        name: String,
-        description: String,
+        author: {
+            type: String,
+            required: true
+        },
+        name: {
+            type: String,
+            required: true
+        },
+        description: {
+            type: String,
+            required: true
+        },
         posts: [postSchema],
-        category: String,
+        category: {
+            type: String,
+            required: true,
+            enum: ['all', 'clothing', 'hunting', 'books', 'cards', 'coins', 'keychains', 'comic books', 'misc.']
+        },
     },
     { timestamps: true }
 );
